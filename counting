@@ -29,7 +29,7 @@
     <triggers>
       <trigger
        enabled="y"
-       match="^([A-Za-z].*)\:(\s..)(Unskilled|A Tyro|A Novice|A Beginner|Poor|Not Very Good|Below Average|Average|Above Average|Able|Fair|Proficient|Good|Adroit|Very Good|Excellent|An Expert|Superb|A Master|Eminent|An Adept|Renowned|A High Master|Consummate|A Virtuoso|A Grand Master|Legendary)\.$"
+       match="^([A-Za-z].*)\:(\s+)(Unskilled|A Tyro|A Novice|A Beginner|Poor|Not Very Good|Below Average|Average|Above Average|Able|Fair|Proficient|Good|Adroit|Very Good|Excellent|An Expert|Superb|A Master|Eminent|An Adept|Renowned|A High Master|Consummate|A Virtuoso|A Grand Master|Legendary)\.$"
        omit_from_output="y"
        regexp="y"
        script="SkillCheck"
@@ -72,15 +72,15 @@
 
        --If the variable doesn't currently have a value give it
        --the value of 1, else increment it by 1
-       if not GetVariable(vName):
+       if not GetVariable(vName) then
           vValue = 1
        else
-          vValue = int(GetVariable(vName)) .. 1
+          vValue = int(GetVariable(vName)) + 1
 
        --Display in the command window the improvement message
        --with the corresponding number of improvements added in
        SetVariable(vName, str(vValue))
-       ColourTell('#00FFFF', '', '* You think your ' .. str(vName))
+       ColourTell('#00FFFF', '', '* You think your ' + str(vName))
        ColourTell('#FFFFFF', '', ' [')
        ColourTell('#FF0000', '', str(vValue))
        ColourTell('#FFFFFF', '', '] ')
@@ -99,7 +99,7 @@ end
 
        --If the Skill doesn't currently have a value give it
        --the value of 1
-       if not GetVariable(vName):
+       if not GetVariable(vName) then
           vValue = 1
        else
           vValue = int(GetVariable(vName))
@@ -109,91 +109,91 @@ end
        --stored in the associated variable, if it does not
        --correct it
 
-       if vDesc == "Unskilled":
+       if vDesc == "Unskilled" then
           if vValue > 3: vValue = 3
-       elseif vDesc == "A Tyro":
+       elseif vDesc == "A Tyro" then
           if vValue < 4: vValue = 4
           elseif vValue > 9: vValue = 9
-       elseif vDesc == "A Novice":
+       elseif vDesc == "A Novice" then
           if vValue < 10: vValue = 10
           elseif vValue > 17: vValue = 17
-       elseif vDesc == "A Beginner":
+       elseif vDesc == "A Beginner" then
           if vValue < 18: vValue = 18
           elseif vValue > 29: vValue = 29
-       elseif vDesc == "Poor":
+       elseif vDesc == "Poor" then
           if vValue < 30: vValue = 30
           elseif vValue > 49: vValue = 49
-       elseif vDesc == "Not Very Good":
+       elseif vDesc == "Not Very Good" then
           if vValue < 50: vValue = 50
           elseif vValue > 69: vValue = 69
-       elseif vDesc == "Below Average":
+       elseif vDesc == "Below Average" then
           if vValue < 70: vValue = 70
           elseif vValue > 89: vValue = 89
-       elseif vDesc == "Average":
+       elseif vDesc == "Average" then
           if vValue < 90: vValue = 90
           elseif vValue > 109: vValue = 109
-       elseif vDesc == "Above Average":
+       elseif vDesc == "Above Average" then
           if vValue < 110: vValue = 110
           elseif vValue > 134: vValue = 134
-       elseif vDesc == "Able":
+       elseif vDesc == "Able" then
           if vValue < 135: vValue = 135
           elseif vValue > 164: vValue = 164
-       elseif vDesc == "Fair":
+       elseif vDesc == "Fair" then
           if vValue < 165: vValue = 165
           elseif vValue > 199: vValue = 199
-       elseif vDesc == "Proficient":
+       elseif vDesc == "Proficient" then
           if vValue < 200: vValue = 200
           elseif vValue > 239: vValue = 239
-       elseif vDesc == "Good":
+       elseif vDesc == "Good" then
           if vValue < 240: vValue = 240
           elseif vValue > 284: vValue = 284
-       elseif vDesc == "Adroit":
+       elseif vDesc == "Adroit" then
           if vValue < 285: vValue = 285
           elseif vValue > 334: vValue = 334
-       elseif vDesc == "Very Good":
+       elseif vDesc == "Very Good" then
           if vValue < 335: vValue = 335
           elseif vValue > 389: vValue = 389
-       elseif vDesc == "Excellent":
+       elseif vDesc == "Excellent" then
           if vValue < 390: vValue = 390
           elseif vValue > 449: vValue = 449
-       elseif vDesc == "An Expert":
+       elseif vDesc == "An Expert" then
           if vValue < 450: vValue = 450
           elseif vValue > 514: vValue = 514
-       elseif vDesc == "Superb":
+       elseif vDesc == "Superb" then
           if vValue < 515: vValue = 515
           elseif vValue > 584: vValue = 584
-       elseif vDesc == "A Master":
+       elseif vDesc == "A Master" then
           if vValue < 585: vValue = 585
           elseif vValue > 659: vValue = 659
-       elseif vDesc == "Eminent":
+       elseif vDesc == "Eminent" then
           if vValue < 660: vValue = 660
           elseif vValue > 739: vValue = 739
-       elseif vDesc == "An Adept":
+       elseif vDesc == "An Adept" then
           if vValue < 740: vValue = 740
           elseif vValue > 824: vValue = 824
-       elseif vDesc == "Renowned":
+       elseif vDesc == "Renowned" then
           if vValue < 825: vValue = 825
           elseif vValue > 919: vValue = 919
-       elseif vDesc == "A High Master":
+       elseif vDesc == "A High Master" then
           if vValue < 920: vValue = 920
           elseif vValue > 1049: vValue = 1049
-       elseif vDesc == "Consummate":
+       elseif vDesc == "Consummate" then
           if vValue < 1050: vValue = 1050
           elseif vValue > 1199: vValue = 1199
-       elseif vDesc == "A Virtuoso":
+       elseif vDesc == "A Virtuoso" then
           if vValue < 1200: vValue = 1200
           elseif vValue > 1399: vValue = 1399
-       elseif vDesc == "A Grand Master":
+       elseif vDesc == "A Grand Master" then
           if vValue < 1400: vValue = 1400
           elseif vValue > 1699: vValue = 1699
-       elseif vDesc == "Legendary":
+       elseif vDesc == "Legendary" then
           if vValue < 1700: vValue = 1700
 
        SetVariable(vName, str(vValue))
 
        --Display the skill and description in the standard DM
        --fashion appending the variable value to the end
-       ColourTell('#CCCCCC', '', str(vStringName) .. ':' .. str(Space1) .. str(vDesc))
+       ColourTell('#CCCCCC', '', str(vStringName) + ':' + str(Space1) + str(vDesc))
        ColourTell('#FFFFFF', '', ' [')
        ColourTell('#FF0000', '', str(vValue))
        ColourNote('#FFFFFF', '', ']')
@@ -216,7 +216,7 @@ end
 
        --If the Skill doesn't currently have a value give it
        --the value of 1
-       if not GetVariable(vName):
+       if not GetVariable(vName) then
           vValue = 1
        else
           vValue = int(GetVariable(vName))
@@ -225,137 +225,137 @@ end
        --given by the mud corresponds with the skill level
        --stored in the associated variable, if it does not
        --correct it
-       if vDesc == "Unskilled":
+       if vDesc == "Unskilled" then
           if vValue > 3: vValue = 3
-       elseif vDesc == "Tyro":
+       elseif vDesc == "Tyro" then
           if vValue < 4: vValue = 4
           elseif vValue > 9: vValue = 9
-       elseif vDesc == "Novice":
+       elseif vDesc == "Novice" then
           if vValue < 10: vValue = 10
           elseif vValue > 17: vValue = 17
-       elseif vDesc == "Beginner":
+       elseif vDesc == "Beginner" then
           if vValue < 18: vValue = 18
           elseif vValue > 29: vValue = 29
-       elseif vDesc == "Poor":
+       elseif vDesc == "Poor" then
           if vValue < 30: vValue = 30
           elseif vValue > 49: vValue = 49
-       elseif vDesc == "NVG":
+       elseif vDesc == "NVG" then
           if vValue < 50: vValue = 50
           elseif vValue > 69: vValue = 69
-       elseif vDesc == "Below Average":
+       elseif vDesc == "Below Average" then
           if vValue < 70: vValue = 70
           elseif vValue > 89: vValue = 89
-       elseif vDesc == "Average":
+       elseif vDesc == "Average" then
           if vValue < 90: vValue = 90
           elseif vValue > 119: vValue = 119
-       elseif vDesc == "AA":
+       elseif vDesc == "AA" then
           if vValue < 110: vValue = 110
           elseif vValue > 134: vValue = 134
-       elseif vDesc == "Able":
+       elseif vDesc == "Able" then
           if vValue < 135: vValue = 135
           elseif vValue > 164: vValue = 164
-       elseif vDesc == "Fair":
+       elseif vDesc == "Fair" then
           if vValue < 165: vValue = 165
           elseif vValue > 199: vValue = 199
-       elseif vDesc == "Proficient":
+       elseif vDesc == "Proficient" then
           if vValue < 200: vValue = 200
           elseif vValue > 239: vValue = 239
-       elseif vDesc == "Good":
+       elseif vDesc == "Good" then
           if vValue < 240: vValue = 240
           elseif vValue > 284: vValue = 284
-       elseif vDesc == "Adroit":
+       elseif vDesc == "Adroit" then
           if vValue < 285: vValue = 285
           elseif vValue > 334: vValue = 334
-       elseif vDesc == "VG":
+       elseif vDesc == "VG" then
           if vValue < 335: vValue = 335
           elseif vValue > 389: vValue = 389
-       elseif vDesc == "Excellent":
+       elseif vDesc == "Excellent" then
           if vValue < 390: vValue = 390
           elseif vValue > 449: vValue = 449
-       elseif vDesc == "Expert":
+       elseif vDesc == "Expert" then
           if vValue < 450: vValue = 450
           elseif vValue > 514: vValue = 514
-       elseif vDesc == "Superb":
+       elseif vDesc == "Superb" then
           if vValue < 515: vValue = 515
           elseif vValue > 584: vValue = 584
-       elseif vDesc == "Master":
+       elseif vDesc == "Master" then
           if vValue < 585: vValue = 585
           elseif vValue > 659: vValue = 659
-       elseif vDesc == "Eminent":
+       elseif vDesc == "Eminent" then
           if vValue < 660: vValue = 660
           elseif vValue > 739: vValue = 739
-       elseif vDesc == "Adept":
+       elseif vDesc == "Adept" then
           if vValue < 740: vValue = 740
           elseif vValue > 824: vValue = 824
-       elseif vDesc == "Renowned":
+       elseif vDesc == "Renowned" then
           if vValue < 825: vValue = 825
           elseif vValue > 919: vValue = 919
-       elseif vDesc == "HM":
+       elseif vDesc == "HM" then
           if vValue < 920: vValue = 920
           elseif vValue > 1049: vValue = 1049
-       elseif vDesc == "Consummate":
+       elseif vDesc == "Consummate" then
           if vValue < 1050: vValue = 1050
           elseif vValue > 1199: vValue = 1199
-       elseif vDesc == "Virtuoso":
+       elseif vDesc == "Virtuoso" then
           if vValue < 1200: vValue = 1200
           elseif vValue > 1399: vValue = 1399
-       elseif vDesc == "GM":
+       elseif vDesc == "GM" then
           if vValue < 1400: vValue = 1400
           elseif vValue > 1699: vValue = 1699
-       elseif vDesc == "Legendary":
+       elseif vDesc == "Legendary" then
           if vValue < 1700: vValue = 1700
 
        SetVariable(vName, str(vValue))
 
        --Display the abbreviation, skill, and casting time in
        --standard DM fashion
-       ColourTell('#008080', '', str(vAbbr) .. str(vSpace1))
-       ColourTell('#FFFFFF', '', str(vStringName) .. str(vSpace2))
-       ColourTell('#CCCCCC', '', str(vTime) .. ' ')
+       ColourTell('#008080', '', str(vAbbr) + str(vSpace1))
+       ColourTell('#FFFFFF', '', str(vStringName) + str(vSpace2))
+       ColourTell('#CCCCCC', '', str(vTime) + ' ')
 
        --Check the casting costs and color and display
        if vCost == "very dim red":
           ColourTell('#666666', '', 'very dim ')
-          ColourTell('#FF0000', '', 'red' .. str(vSpace3))
+          ColourTell('#FF0000', '', 'red' + str(vSpace3))
        elseif vCost == "dim red":
           ColourTell('#666666', '', 'dim ')
-          ColourTell('#FF0000', '', 'red' .. str(vSpace3))
-       elseif vCost == "red": ColourTell('#FF0000', '', 'red' .. str(vSpace3))
+          ColourTell('#FF0000', '', 'red' + str(vSpace3))
+       elseif vCost == "red": ColourTell('#FF0000', '', 'red' + str(vSpace3))
        elseif vCost == "orangish-red":
           ColourTell('#CC6600', '', 'orangish')
           ColourTell('#CCCCCC', '', '-')
-          ColourTell('#FF0000', '', 'red' .. str(vSpace3))
+          ColourTell('#FF0000', '', 'red' + str(vSpace3))
        elseif vCost == "reddish-orange":
           ColourTell('#FF0000', '', 'reddish')
           ColourTell('#CCCCCC', '', '-')
-          ColourTell('#CC6600', '', 'orange' .. str(vSpace3))
-       elseif vCost == "orange": ColourTell('#CC6600', '', 'orange' .. str(vSpace3))
+          ColourTell('#CC6600', '', 'orange' + str(vSpace3))
+       elseif vCost == "orange": ColourTell('#CC6600', '', 'orange' + str(vSpace3))
        elseif vCost == "yellowish-orange":
           ColourTell('#FFFF00', '', 'yellowish')
           ColourTell('#CCCCCC', '', '-')
-          ColourTell('#CC6600', '', 'orange' .. str(vSpace3))
+          ColourTell('#CC6600', '', 'orange' + str(vSpace3))
        elseif vCost == "orangish-yellow":
           ColourTell('#CC6600', '', 'orangish')
           ColourTell('#CCCCCC', '', '-')
-          ColourTell('#FFFF00', '', 'yellow' .. str(vSpace3))
-       elseif vCost == "yellow": ColourTell('#FFFF00', '', 'yellow' .. str(vSpace3))
+          ColourTell('#FFFF00', '', 'yellow' + str(vSpace3))
+       elseif vCost == "yellow": ColourTell('#FFFF00', '', 'yellow' + str(vSpace3))
        elseif vCost == "greenish-yellow":
           ColourTell('#00FF00', '', 'greenish')
           ColourTell('#CCCCCC', '', '-')
-          ColourTell('#FFFF00', '', 'yellow' .. str(vSpace3))
+          ColourTell('#FFFF00', '', 'yellow' + str(vSpace3))
        elseif vCost == "yellowish-green":
           ColourTell('#FFFF00', '', 'yellowish')
           ColourTell('#CCCCCC', '', '-')
-          ColourTell('#00FF00', '', 'green' .. str(vSpace3))
-       elseif vCost == "green": ColourTell('#00FF00', '', 'green' .. str(vSpace3))
+          ColourTell('#00FF00', '', 'green' + str(vSpace3))
+       elseif vCost == "green": ColourTell('#00FF00', '', 'green' + str(vSpace3))
        elseif vCost == "bluish-green":
           ColourTell('#0000FF', '', 'bluish')
           ColourTell('#CCCCCC', '', '-')
-          ColourTell('#00FF00', '', 'green' .. str(vSpace3))
+          ColourTell('#00FF00', '', 'green' + str(vSpace3))
        elseif vCost == "greenish-blue":
           ColourTell('#00FF00', '', 'greenish')
           ColourTell('#CCCCCC', '', '-')
-       elseif vCost == "blue": ColourTell('#0000FF', '', 'blue' .. str(vSpace3))
+       elseif vCost == "blue": ColourTell('#0000FF', '', 'blue' + str(vSpace3))
 
        --Display the description along with the actual variable value
        ColourTell('#CCCCCC', '', str(vDesc))
